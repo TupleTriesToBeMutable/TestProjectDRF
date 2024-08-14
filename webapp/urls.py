@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
-
+from .controllers import guest
 
 urlpatterns = [
-
+    path('guest/register', guest.register),
+    path('home/', guest.guest),
 ]
