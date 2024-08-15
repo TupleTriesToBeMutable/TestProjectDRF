@@ -3,5 +3,6 @@ from .controllers import guest
 
 urlpatterns = [
     path('guest/register', guest.register),
-    path('home/', guest.guest),
+    path('guest/login', guest.user_login),
+    path('guest/getinfo', guest.getinfo),
 ]
