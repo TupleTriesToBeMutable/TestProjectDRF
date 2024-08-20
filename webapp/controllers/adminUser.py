@@ -4,20 +4,19 @@ from rest_framework import generics
 from webapp.serializers.userSerializer import UserSerializer
 
 
-class UserController(mixins.ListModelMixin,
-                     mixins.UpdateModelMixin,
-                     mixins.DestroyModelMixin,
-                     generics.GenericAPIView):
+class AdminUserController(mixins.ListModelMixin,
+                          mixins.UpdateModelMixin,
+                          mixins.DestroyModelMixin,
+                          generics.GenericAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    lookup_field = 'id'
 
     def get(self, request, *args, **kwargs):
-        #если авторизован
         return self.list(request, *args, **kwargs)
 
-    def put(self, request, pk, *args, **kwargs):
-        return self.update(request, pk, *args, **kwargs)
+    def patch(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
-
