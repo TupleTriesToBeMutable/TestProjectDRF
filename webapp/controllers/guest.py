@@ -5,7 +5,6 @@ from django.http import *
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 
-# валидацию json сделать, через jsonschema
 @csrf_exempt
 def register(request: HttpRequest):
     if request.method == 'POST':
