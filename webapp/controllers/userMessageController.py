@@ -3,7 +3,6 @@ from webapp.serializers.userMessageSerializer import UserMessageSerializer
 from webapp.models.userMessage import UserMessage
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
 
 
 class UserMessageController(ModelViewSet):

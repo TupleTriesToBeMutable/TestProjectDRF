@@ -13,17 +13,10 @@ class UserAccountController(mixins.ListModelMixin,
     lookup_url_kwarg = 'username'
     queryset = User.objects.all()
 
-    # def get_queryset(self):
-    #     path_variables = self.request.parser_context.get('kwargs')
-    #     username = path_variables.get(self.lookup_url_kwarg)
-    #     return username
-
     def get(self, request, *args, **kwargs):
-        # user = User.objects.get(username=kwargs[self.lookup_url_kwarg])
         user = self.get_object()
         serializer = self.serializer_class(user)
         return Response(serializer.data)
-        # return self.list(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.http import *
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from webapp.models.userBalance import UserBalance
 
 @csrf_exempt
 def register(request: HttpRequest):
@@ -15,11 +16,12 @@ def register(request: HttpRequest):
             user = User.objects.create_user(username=body['username'],
                                             email=body['email'],
                                             password=body['password'])
-            user.save()
+            UserBalance.objects.create(user=user,
+                                       balance=0)
             return HttpResponse(status=201)
+    return HttpResponse(status=404)
 
 
-# request.user.is_authenticated()
 @csrf_exempt
 def user_login(request: HttpRequest):
     if request.method == 'POST':

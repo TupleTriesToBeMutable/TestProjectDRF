@@ -39,11 +39,11 @@ INSTALLED_APPS = [
     'webapp.apps.WebappConfig',
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.BasicAuthentication',
+#     ]
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
